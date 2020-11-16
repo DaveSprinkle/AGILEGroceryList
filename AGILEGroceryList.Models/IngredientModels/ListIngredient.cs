@@ -9,8 +9,8 @@ namespace AGILEGroceryList.Models
 {
     public class ListIngredient
     {
-
-        public int IngredientId { get; set; }
+        [Key]
+        public string IngredientId { get; set; }
 
         public string Name { get; set; }
 

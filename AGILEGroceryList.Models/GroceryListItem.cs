@@ -1,22 +1,20 @@
-﻿using System;
+﻿using AGILEGroceryList.Data;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AGILEGroceryList.Data
+namespace AGILEGroceryList.Models
 {
-    public class GroceryList
+    public class GroceryListItem
     {
-        [Key]
         public int GroceryListId { get; set; }
 
-        [Required]
         public Guid OwnerId { get; set; }
 
-        [Required]
         public string Name { get; set; }
 
+        public List<IngredientList> Ingredients { get; set; }
     }
 }
