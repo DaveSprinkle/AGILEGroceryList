@@ -6,23 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AGILEGroceryList.Data
+namespace AGILEGroceryList.Models
 {
-    public class Recipe
+    public class CreateRecipe
     {
-        [Key]
-        public int RecipeId { get; set; }
-
         [Required]
         public Guid OwnerId { get; set; }
-
         [Required]
         public string Name { get; set; }
-
+        [Required]
         public string Instructions { get; set; }
-
-        public Dictionary<string, Dictionary<TypeOfMeasurement, int>> Ingredients { get; set; }
-
-
+        [Required]
+        public string Ingredient { get; set; }
+        [Required]
+        public TypeOfMeasurement TypeOfMeasurement { get; set; }
+        [Required]
+        public int Quanity { get; set; }
     }
 }
