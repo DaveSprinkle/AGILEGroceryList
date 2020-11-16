@@ -1,5 +1,6 @@
 ﻿using AGILEGroceryList.Data;
 using AGILEGroceryList.Models;
+using AGILEGroceryList.Models.IngredientModels;
 using AGILEGroceryList.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -28,24 +29,6 @@ namespace AGILEGroceryList.WebAPI.Controllers
 
         //========CREATE========//
 
-        //POST
-        public IHttpActionResult Post(CreateIngredient ingredient)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
-
-            //instantitate service
-            IngredientServices service = CreateIngredientService();
-
-            if (!service.IngredientCreate(ingredient))
-            {
-                return InternalServerError();
-            }
-
-            return Ok();
-        }
 
 
 
