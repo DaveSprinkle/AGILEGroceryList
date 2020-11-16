@@ -9,7 +9,15 @@ namespace AGILEGroceryList.Data
 {
     public class Recipe
     {
+        [Key]
+        public int RecipeId { get; set; }
 
+        [Required]
+        public Guid OwnerId { get; set; }
 
+        [Required]
+        public string Name { get; set; }
+
+        public List<Ingredient> Ingredients { get; set; }
     }
 }
