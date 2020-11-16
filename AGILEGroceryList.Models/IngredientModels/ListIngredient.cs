@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace AGILEGroceryList.Models
 {
-    public class IngredientList
+    public class ListIngredient
     {
-        [Key]
-        public string IngredientId { get; set; }
+
+        public int IngredientId { get; set; }
 
         public string Name { get; set; }
 
