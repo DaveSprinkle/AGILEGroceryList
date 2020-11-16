@@ -54,15 +54,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GroceryListServices.cs" />
-    <Compile Include="IngredientServices.cs" />
-    <Compile Include="MealServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RecipeServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AGILEGroceryList.Data\AGILEGroceryList.Data.csproj">
+      <Project>{996f64b1-78ca-4adc-8c1d-fa5a3ce9becd}</Project>
+      <Name>AGILEGroceryList.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AGILEGroceryList.Models\AGILEGroceryList.Models.csproj">
+      <Project>{5bdb3c57-1ef8-44ed-8764-f8ffaed91a06}</Project>
+      <Name>AGILEGroceryList.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

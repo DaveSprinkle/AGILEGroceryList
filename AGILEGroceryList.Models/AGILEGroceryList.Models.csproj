@@ -60,5 +60,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AGILEGroceryList.Data\AGILEGroceryList.Data.csproj">
+      <Project>{996f64b1-78ca-4adc-8c1d-fa5a3ce9becd}</Project>
+      <Name>AGILEGroceryList.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
