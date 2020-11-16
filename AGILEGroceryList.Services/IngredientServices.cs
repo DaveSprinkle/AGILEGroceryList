@@ -21,6 +21,9 @@ namespace AGILEGroceryList.Services
 		}
 
 
+        //==========================CREATE===============================//
+
+
         public bool CreateNewIngredient(CreateIngredient ingredient)
         {
             if (ingredient is null)
@@ -43,6 +46,57 @@ namespace AGILEGroceryList.Services
         }
 
 
+        
+        
+        //==========================GET ALL INGREDIENTS===============================//
+
+
+        public IEnumerable<ListIngredient> GetIngredients()//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Ingredients
+                        .Select(
+                            e =>
+                                new ListIngredient
+                                {
+                                    IngredientId = e.IngredientId,
+                                    Name = e.Name
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+
+        
+        
+        
+        
+        //==========================GET INGREDIENT BY NAME===============================//
+
+
+        public IEnumerable<ListIngredient> GetIngredientById(int id)//get
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Ingredients
+                        .Where(e => e.IngredientId == id)
+                        .Select(
+                            e =>
+                                new ListIngredient
+                                {
+                                    IngredientId = e.IngredientId,
+                                    Name = e.Name,
+                                }
+                        );
+                return query.ToArray();
+            }
+        }
 
 
 
