@@ -54,8 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateIngredient.cs" />
-    <Compile Include="IngredientList.cs" />
+    <Compile Include="IngredientModels\CreateIngredient.cs" />
+    <Compile Include="IngredientModels\ListIngredient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,5 +68,6 @@
       <Name>AGILEGroceryList.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
