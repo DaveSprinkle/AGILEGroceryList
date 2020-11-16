@@ -51,7 +51,7 @@ namespace AGILEGroceryList.Services
         //==========================GET ALL INGREDIENTS===============================//
 
 
-        public IEnumerable<ListIngredient> GetIngredients()//get
+        public IEnumerable<ListIngredient> GetIngredients()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -78,14 +78,14 @@ namespace AGILEGroceryList.Services
         //==========================GET INGREDIENT BY NAME===============================//
 
 
-        public IEnumerable<ListIngredient> GetIngredientById(int id)//get
+        public IEnumerable<ListIngredient> GetIngredientByName(string name)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .Ingredients
-                        .Where(e => e.IngredientId == id)
+                        .Where(e => e.Name == name)
                         .Select(
                             e =>
                                 new ListIngredient
