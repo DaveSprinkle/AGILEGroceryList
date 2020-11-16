@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Meal Data\GroceryList.cs" />
+    <Compile Include="Measurements\Measurements.cs" />
     <Compile Include="Security\IdentityModels.cs" />
     <Compile Include="Meal Data\Ingredient.cs" />
     <Compile Include="Meal Data\Meal.cs" />
