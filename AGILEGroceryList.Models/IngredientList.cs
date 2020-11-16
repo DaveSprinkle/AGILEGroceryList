@@ -5,15 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AGILEGroceryList.Data
+namespace AGILEGroceryList.Models
 {
-    public class Ingredient
+    public class IngredientList
     {
         [Key]
-        public int IngredientId { get; set; }
-        [Required]
-        public string Name { get; set; }
+        public string IngredientId { get; set; }
 
+        public string Name { get; set; }
 
     }
 }
