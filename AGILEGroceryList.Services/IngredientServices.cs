@@ -1,11 +1,13 @@
 ﻿using AGILEGroceryList.Data;
 using AGILEGroceryList.Models;
-using AGILEGroceryList.Models.IngredientModels;
+using AGILEGroceryList.Models.Ingredient;
+using AGILEGroceryList.Models.Ingredient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace AGILEGroceryList.Services
 {
@@ -97,6 +99,21 @@ namespace AGILEGroceryList.Services
                 return query.ToArray();
             }
         }
+
+
+        //==========================GET INGREDIENT BY NAME===============================//
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
