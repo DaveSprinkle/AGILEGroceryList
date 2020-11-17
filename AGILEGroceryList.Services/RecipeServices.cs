@@ -33,7 +33,7 @@ namespace AGILEGroceryList.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Posts.Add(entity);
+                ctx.Recipes.Add(entity);
 
                 return ctx.SaveChanges() == 1;
             }
