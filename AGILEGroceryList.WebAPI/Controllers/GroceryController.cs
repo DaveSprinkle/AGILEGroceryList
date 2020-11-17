@@ -49,24 +49,24 @@ namespace AGILEGroceryList.WebAPI.Controllers
         //=======READ=====//
         //Get All
         [HttpGet]
-        public IHttpActionResult GetAllGroceryLists()
+        public async Task<IHttpActionResult> GetAllGroceryLists()
         {
             //instantiate a service
             GroceryService service = CreateGroceryService();
 
             //return the values as an ienumerable
-            IEnumerable<GroceryListItem> groceries = service.GetGroceryLists();
+            IEnumerable<GroceryListItem> groceries = await service.GetGroceryLists();
 
             return Ok(groceries);
         }
 
         //Get by Id
         [HttpGet]
-        public IHttpActionResult GetGroceryListById([FromUri] int id)
+        public async Task<IHttpActionResult> GetGroceryListById([FromUri] int id)
         {
             GroceryService service = CreateGroceryService();
 
-            IEnumerable < GroceryListItem > groceryList = service.GetGroceryListById(id);
+            IEnumerable < GroceryListItem > groceryList = await service.GetGroceryListById(id);
 
             return Ok(groceryList);
         }
@@ -74,11 +74,11 @@ namespace AGILEGroceryList.WebAPI.Controllers
 
         //======Update=======//
         [HttpPut]
-        public IHttpActionResult UpdateGroceryList([FromUri] int id, [FromBody] GroceryEdit model)
+        public async Task<IHttpActionResult> UpdateGroceryList([FromUri] int id, [FromBody] GroceryEdit model)
         {
             GroceryService service = CreateGroceryService();
 
-            if(!service.UpdateGroceryListById(id, model))
+            if(await service.UpdateGroceryListById(id, model) == false)
             {
                 return InternalServerError();
             }
@@ -90,11 +90,11 @@ namespace AGILEGroceryList.WebAPI.Controllers
 
         //=======Delete=======//
         [HttpDelete]
-        public IHttpActionResult DeleteGroceryList(int id)
+        public async Task<IHttpActionResult> DeleteGroceryList(int id)
         {
             GroceryService service = CreateGroceryService();
 
-            if(!service.DeleteGroceryListById(id))
+            if(await service.DeleteGroceryListById(id) == false)
             {
                 return InternalServerError();
             }
