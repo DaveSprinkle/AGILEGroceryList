@@ -19,7 +19,7 @@ namespace AGILEGroceryList.Services
 
         //==========================CREATE===============================//
 
-        public async Task<bool> CreateMeasurementList(CreateMeasurement model)
+        public async Task<bool> CreateMeasurement(CreateMeasurement model)
         {
             var entity =
                 new Measurement()
@@ -32,6 +32,32 @@ namespace AGILEGroceryList.Services
             _context.Measurements.Add(entity);
             return await _context.SaveChangesAsync() == 1;
         }
+        //public async Task<List<GroceryListItem>> GetGroceryLists()
+        //{
+        //    var query =
+        //        await
+        //        _context
+        //        .GroceryLists
+        //        .Where(e => e.OwnerId == _userId)
+        //        .Select(
+        //            e =>
+        //            new GroceryListItem()
+        //            {
+        //                GroceryListId = e.GroceryListId,
+        //                OwnerId = e.OwnerId,
+        //                Name = e.Name,
+        //                Ingredients = _context.Ingredients.Where(i => i.GroceryListId == e.GroceryListId)
+        //                .Select(
+        //                    gi =>
+        //                    new ListIngredient()
+        //                    {
+        //                        IngredientId = gi.IngredientId,
+        //                        Name = gi.Name
+        //                    }
+        //                    ).ToList()
+        //            }).ToListAsync();
+        //    return query;
+        //}
 
     }
 }
