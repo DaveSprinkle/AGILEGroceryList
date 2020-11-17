@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GroceryList\GroceryCreate.cs" />
+    <Compile Include="GroceryList\GroceryListItem.cs" />
     <Compile Include="Ingredient\CreateIngredient.cs" />
     <Compile Include="Ingredient\ListIngredient.cs" />
     <Compile Include="Ingredient\EditIngredient.cs" />
