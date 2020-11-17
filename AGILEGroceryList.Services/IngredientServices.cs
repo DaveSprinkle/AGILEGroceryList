@@ -4,6 +4,7 @@ using AGILEGroceryList.Models.Ingredient;
 
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,10 @@ namespace AGILEGroceryList.Services
 		{
 			_userId = userId;
 		}
+
+
+        //create a private context
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
 
         //==========================CREATE===============================//
@@ -48,57 +53,55 @@ namespace AGILEGroceryList.Services
         }
 
 
-        
-        
+
+
         //==========================GET ALL INGREDIENTS===============================//
 
 
-        public IEnumerable<ListIngredient> GetIngredients()
+        public async Task<List<ListIngredient>> GetIngredients()  //ListAllIngredients
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .Ingredients
-                        .Select(
-                            e =>
-                                new ListIngredient
-                                {
-                                    IngredientId = e.IngredientId,
-                                    Name = e.Name
-                                }
-                        );
-
-                return query.ToArray();
-            }
+            var query =
+                await
+                _context
+                .Ingredients
+                .Select(
+                    e =>
+                    new ListIngredient()
+                    {
+                        Name = e.Name,
+                        
+                    }).ToListAsync();
+            return query;
         }
 
-        
+
+
+       
         
         
         
         //==========================GET INGREDIENT BY NAME===============================//
 
 
-        public IEnumerable<ListIngredient> GetIngredientByName([FromUri] string name)
+        public async Task<List<ListIngredient>> GetIngredientByName([FromUri] string name)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .Ingredients
-                        .Where(e => e.Name == name)
-                        .Select(
-                            e =>
-                                new ListIngredient
-                                {
-                                    IngredientId = e.IngredientId,
-                                    Name = e.Name,
-                                }
-                        );
-                return query.ToArray();
-            }
+            var query =
+                await
+                _context
+                .Ingredients
+                .Where(e => e.Name == name)
+                .Select(
+                    e =>
+                    new ListIngredient()
+                    {
+                        Name = e.Name,
+
+                    }).ToListAsync();
+            return query;
         }
+
+
+
 
 
         //==========================GET INGREDIENT BY NAME===============================//
