@@ -60,6 +60,17 @@ namespace AGILEGroceryList.WebAPI.Controllers
             return Ok(groceries);
         }
 
+        //Get by Id
+        [HttpGet]
+        public IHttpActionResult GetGroceryListById([FromUri] int id)
+        {
+            GroceryService service = CreateGroceryService();
+
+            IEnumerable < GroceryListItem > groceryList = service.GetGroceryListById(id);
+
+            return Ok(groceryList);
+        }
+
 
         //======Update=======//
         [HttpPut]

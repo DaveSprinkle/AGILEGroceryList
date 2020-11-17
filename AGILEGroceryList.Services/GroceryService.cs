@@ -65,6 +65,36 @@ namespace AGILEGroceryList.Services
             return query.ToArray();
         }
 
+        //Get grocery by id
+        public IEnumerable<GroceryListItem> GetGroceryListById(int id)
+        {
+            var query =
+                _context
+                .GroceryLists
+                .Where(e => e.GroceryListId == id && e.OwnerId == _userId)
+                .Select(
+                    e =>
+                    new GroceryListItem
+                    {
+                        GroceryListId = e.GroceryListId,
+                        OwnerId = e.OwnerId,
+                        Name = e.Name,
+                        Ingredients = _context.Ingredients.Where(i => i.GroceryListId == e.GroceryListId)
+                        .Select(ing => 
+                            new ListIngredient
+                            {
+                                IngredientId = ing.IngredientId,
+                                Name = ing.Name
+                            }
+                        ).ToList()
+                    }
+                    );
+
+            return query.ToArray();
+        }
+
+
+        //Update grocery by id
         public bool UpdateGroceryListById([FromUri]int id, [FromBody] GroceryEdit model)
         {
             var entity =
