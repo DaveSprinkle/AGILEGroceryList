@@ -4,6 +4,7 @@ using AGILEGroceryList.Models.GroceryList;
 using AGILEGroceryList.Models.Ingredient;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,9 +40,10 @@ namespace AGILEGroceryList.Services
         }
 
         //Get grocery list
-        public IEnumerable<GroceryListItem> GetGroceryLists()
+        public async Task<List<GroceryListItem>> GetGroceryLists()
         {
             var query =
+                await
                 _context
                 .GroceryLists
                 .Where(e => e.OwnerId == _userId)
@@ -61,14 +63,15 @@ namespace AGILEGroceryList.Services
                                 Name = gi.Name
                             }
                             ).ToList()
-                    });
-            return query.ToArray();
+                    }).ToListAsync();
+            return query;
         }
 
         //Get grocery by id
-        public IEnumerable<GroceryListItem> GetGroceryListById(int id)
+        public async Task<List<GroceryListItem>> GetGroceryListById(int id)
         {
             var query =
+                await
                 _context
                 .GroceryLists
                 .Where(e => e.GroceryListId == id && e.OwnerId == _userId)
@@ -88,14 +91,14 @@ namespace AGILEGroceryList.Services
                             }
                         ).ToList()
                     }
-                    );
+                    ).ToListAsync();
 
-            return query.ToArray();
+            return query;
         }
 
 
         //Update grocery by id
-        public bool UpdateGroceryListById([FromUri]int id, [FromBody] GroceryEdit model)
+        public async Task<bool> UpdateGroceryListById([FromUri]int id, [FromBody] GroceryEdit model)
         {
             var entity =
                 _context
@@ -103,10 +106,10 @@ namespace AGILEGroceryList.Services
                 .Single(e => e.GroceryListId == id && e.OwnerId == _userId);
             entity.Name = model.Name;
 
-            return _context.SaveChanges() == 1;
+            return await _context.SaveChangesAsync() == 1;
         }
 
-        public bool DeleteGroceryListById([FromUri] int id)
+        public async Task<bool> DeleteGroceryListById([FromUri] int id)
         {
             var entity =
                 _context
@@ -115,7 +118,7 @@ namespace AGILEGroceryList.Services
 
             _context.GroceryLists.Remove(entity);
 
-            return _context.SaveChanges() == 1;
+            return await _context.SaveChangesAsync() == 1;
         }
     }
 }
