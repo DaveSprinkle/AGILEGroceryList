@@ -1,10 +1,13 @@
 ﻿using AGILEGroceryList.Data;
 using AGILEGroceryList.Models;
+using AGILEGroceryList.Models.GroceryList;
+using AGILEGroceryList.Models.Ingredient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace AGILEGroceryList.Services
 {
@@ -52,7 +55,7 @@ namespace AGILEGroceryList.Services
                         Ingredients = _context.Ingredients.Where(i => i.GroceryListId == e.GroceryListId)
                         .Select(
                             gi =>
-                            new IngredientList()
+                            new ListIngredient()
                             {
                                 IngredientId = gi.IngredientId,
                                 Name = gi.Name
@@ -60,6 +63,59 @@ namespace AGILEGroceryList.Services
                             ).ToList()
                     });
             return query.ToArray();
+        }
+
+        //Get grocery by id
+        public IEnumerable<GroceryListItem> GetGroceryListById(int id)
+        {
+            var query =
+                _context
+                .GroceryLists
+                .Where(e => e.GroceryListId == id && e.OwnerId == _userId)
+                .Select(
+                    e =>
+                    new GroceryListItem
+                    {
+                        GroceryListId = e.GroceryListId,
+                        OwnerId = e.OwnerId,
+                        Name = e.Name,
+                        Ingredients = _context.Ingredients.Where(i => i.GroceryListId == e.GroceryListId)
+                        .Select(ing => 
+                            new ListIngredient
+                            {
+                                IngredientId = ing.IngredientId,
+                                Name = ing.Name
+                            }
+                        ).ToList()
+                    }
+                    );
+
+            return query.ToArray();
+        }
+
+
+        //Update grocery by id
+        public bool UpdateGroceryListById([FromUri]int id, [FromBody] GroceryEdit model)
+        {
+            var entity =
+                _context
+                .GroceryLists
+                .Single(e => e.GroceryListId == id && e.OwnerId == _userId);
+            entity.Name = model.Name;
+
+            return _context.SaveChanges() == 1;
+        }
+
+        public bool DeleteGroceryListById([FromUri] int id)
+        {
+            var entity =
+                _context
+                .GroceryLists
+                .Single(e => e.GroceryListId == id && e.OwnerId == _userId);
+
+            _context.GroceryLists.Remove(entity);
+
+            return _context.SaveChanges() == 1;
         }
     }
 }

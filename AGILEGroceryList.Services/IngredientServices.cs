@@ -1,7 +1,7 @@
 ﻿using AGILEGroceryList.Data;
 using AGILEGroceryList.Models;
 using AGILEGroceryList.Models.Ingredient;
-using AGILEGroceryList.Models.Ingredient;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,7 +80,7 @@ namespace AGILEGroceryList.Services
         //==========================GET INGREDIENT BY NAME===============================//
 
 
-        public IEnumerable<ListIngredient> GetIngredientByName(string name)
+        public IEnumerable<ListIngredient> GetIngredientByName([FromUri] string name)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -104,19 +104,38 @@ namespace AGILEGroceryList.Services
         //==========================GET INGREDIENT BY NAME===============================//
 
 
+        public bool EditIngredientByName([FromUri] int id, [FromBody] EditIngredient ingredient)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                ctx
+                .Ingredients
+                .Single(e => e.IngredientId == id);
+                entity.Name = ingredient.Name;
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
 
 
 
+        //==========================DELETE INGREDIENT BY ID===============================//
 
 
 
-
-
-
-
-
-
-
+        public bool DeletePostsById([FromUri] int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                ctx
+                .Ingredients
+                .Single(e => e.IngredientId == id);
+                ctx.Ingredients.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
     }
 }
