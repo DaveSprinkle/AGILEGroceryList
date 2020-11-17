@@ -21,7 +21,9 @@ namespace AGILEGroceryList.Data
 
         public string Instructions { get; set; }
 
-        public Dictionary<string, Dictionary<TypeOfMeasurement, int>> Ingredients { get; set; } // IngredentName, TypeOfMeasurement(number relating to enum), Storage value in it's simplist form.
+        public Dictionary<int, List<int>> Ingredients { get; set; } // [Key], <IngredentId, MeasurementId, Storage value in it's simplist form>.
+
+        //public Dictionary<int, Dictionary<int, int>> Ingredients { get; set; } // IngredentId, MeasurementId, Storage value in it's simplist form.
 
 
     }

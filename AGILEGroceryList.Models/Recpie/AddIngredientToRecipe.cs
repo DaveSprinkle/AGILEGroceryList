@@ -11,11 +11,12 @@ namespace AGILEGroceryList.Models
     public class AddIngredientToRecipe
     {
         [Required]
-        public int RecipeId { get; set; }
+        public string MeasurementName { get; set; }
+
         [Required]
-        public Guid OwnerId { get; set; }
-        public string Ingredient { get; set; }
-        public TypeOfMeasurement TypeOfMeasurement { get; set; }
+        public string IngredientName { get; set; }
+
+        [Required]
         public int Quanity { get; set; }
     }
 }
