@@ -51,7 +51,7 @@ Our "Epics" were
 *Create a User Interface for the app
 *Publish the app on a major platform
 *Monetize the app
-
+ 
 
 
 
