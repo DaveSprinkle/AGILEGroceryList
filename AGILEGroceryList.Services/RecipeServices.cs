@@ -14,6 +14,7 @@ namespace AGILEGroceryList.Services
     public class RecipeServices
     {
 
+        private readonly ApplicationDbContext _context = new ApplicationDbContext();
 
         private readonly Guid _userId;
 
@@ -21,7 +22,7 @@ namespace AGILEGroceryList.Services
         {
             _userId = userId;
         }
-        public bool CreateRecipe(CreateRecipe model)//This needs vaification on the contoler to make sure the name of the measurement and ingredant esist
+        public async Task<bool> CreateRecipe(CreateRecipe model)//This needs vaification on the contoler to make sure the name of the measurement and ingredant esist
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -50,7 +51,7 @@ namespace AGILEGroceryList.Services
 
                 ctx.Recipes.Add(entity);
 
-                return ctx.SaveChanges() == 1;
+                return await ctx.SaveChangesAsync() == 1;
             }
 
         }
