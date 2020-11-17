@@ -13,7 +13,7 @@ namespace AGILEGroceryList.Data.Measurements
         public int MeasurementId { get; set; }
         public string Name { get; set; }//Cups or grams
         public TypeOfMeasurement TypeOfMeasurement { get; set; }//Volume / Mass / Quanity
-        public string Conversion { get; set; }// from basic number to this value x*Conversion = Basic Storage Value | BasicStorageValue* Conversion = Valuse for grocery list
+        public double Conversion { get; set; }// from basic number to this value x*Conversion = Basic Storage Value | BasicStorageValue* Conversion = Valuse for grocery list
     }
     public enum TypeOfMeasurement
     {
