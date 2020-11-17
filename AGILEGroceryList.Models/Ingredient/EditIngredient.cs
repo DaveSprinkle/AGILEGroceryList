@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AGILEGroceryList.Models.Ingredient
 {
-    public class UpdateIngredient
+    public class EditIngredient
     {
         public string Name { get; set; }
 
