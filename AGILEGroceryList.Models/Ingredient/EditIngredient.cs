@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AGILEGroceryList.Models.IngredientModels
+namespace AGILEGroceryList.Models.Ingredient
 {
-    public class CreateIngredient
+    public class UpdateIngredient
     {
-        [Required]
         public string Name { get; set; }
-
-
-
 
     }
 }
