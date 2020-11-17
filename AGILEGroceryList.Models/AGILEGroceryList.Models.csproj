@@ -60,6 +60,7 @@
     <Compile Include="Ingredient\CreateIngredient.cs" />
     <Compile Include="Ingredient\ListIngredient.cs" />
     <Compile Include="Ingredient\EditIngredient.cs" />
+    <Compile Include="Measurement\CreateMeasurement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recpie\AddIngredientToRecipe.cs" />
     <Compile Include="Recpie\IngredientInRecipe.cs" />

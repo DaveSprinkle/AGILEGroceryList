@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MeasurementService.cs" />
     <Compile Include="RecipeServices.cs" />
     <Compile Include="GroceryService.cs" />
     <Compile Include="IngredientServices.cs" />
