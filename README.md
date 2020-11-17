@@ -25,32 +25,32 @@ These items were then turned into tickets.  We only used a four point system, be
 
 Our tickets were:
 
-*Outline for ingredients and recipes
-*Build scaffolding and initialize Github project
-*Ingredients Build
-*Recipe data references
-*Add recipe method
-*Recipe enter and save
-*Meal created or pulled by selecting recipes
-*Add ratings to recipes by user and average
-*Add staples to grocery list, by user
-*Add finish times to recipes
-*Grocery list build
-*Incoming/Outgoing Volume/Mass conversions
+* Outline for ingredients and recipes
+* Build scaffolding and initialize Github project
+* Ingredients Build
+* Recipe data references
+* Add recipe method
+* Recipe enter and save
+* Meal created or pulled by selecting recipes
+* Add ratings to recipes by user and average
+* Add staples to grocery list, by user
+* Add finish times to recipes
+* Grocery list build
+* Incoming/Outgoing Volume/Mass conversions
 
  
 Our Test Items were all CRUD methods for
 
-*Ingredient
-*Recipe
-*GroceryList
+* Ingredient
+* Recipe
+* GroceryList
  
 
 Our "Epics" were
 
-*Create a User Interface for the app
-*Publish the app on a major platform
-*Monetize the app
+* Create a User Interface for the app
+* Publish the app on a major platform
+* Monetize the app
  
  
 
