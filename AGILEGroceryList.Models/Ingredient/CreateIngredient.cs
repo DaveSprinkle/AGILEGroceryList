@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AGILEGroceryList.Models.Ingredient
 {
-    public class EditIngredient
+    public class CreateIngredient
     {
         [Required]
         public string Name { get; set; }
