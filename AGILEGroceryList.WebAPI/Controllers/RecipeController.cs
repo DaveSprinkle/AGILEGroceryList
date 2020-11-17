@@ -48,24 +48,24 @@ namespace AGILEGroceryList.WebAPI.Controllers
         //=======READ=====//
         //Get All
         [HttpGet]
-        public IHttpActionResult GetAllRecipes()
+        public async Task<IHttpActionResult> GetAllRecipes()
         {
             //instantiate a service
             RecipeServices service = CreateRecipeService();
 
             //return the values as an ienumerable
-            IEnumerable<RecipeListItem> recipes = service.GetRecipes();
+            IEnumerable<RecipeListItem> recipes = await service.GetRecipes();
 
             return Ok(recipes);
         }
 
         //======Update=======//
         [HttpPut]
-        public IHttpActionResult AddRecipeIngredient([FromUri] int id, [FromBody] AddIngredientToRecipe model)
+        public async Task<IHttpActionResult> AddRecipeIngredient([FromUri] int id, [FromBody] AddIngredientToRecipe model)
         {
             RecipeServices service = CreateRecipeService();
 
-            if(!service.AddIngredientToRecipeById(id, model))
+            if(await service.AddIngredientToRecipeById(id, model) == false)
             {
                 return InternalServerError();
             }

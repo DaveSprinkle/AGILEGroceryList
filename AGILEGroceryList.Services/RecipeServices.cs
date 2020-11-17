@@ -4,6 +4,7 @@ using AGILEGroceryList.Models;
 using AGILEGroceryList.Models.Recpie;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,12 +56,13 @@ namespace AGILEGroceryList.Services
             }
 
         }
-        public IEnumerable<RecipeListItem> GetRecipes()//get
+        public async Task<List<RecipeListItem>> GetRecipes()//get
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
-                    ctx
+                        await 
+                        ctx
                         .Recipes
                         .Select(
                             e =>
@@ -89,14 +91,13 @@ namespace AGILEGroceryList.Services
                                             ).FirstOrDefault(),
                                         Quantity = c.Value[2]
                                     }).ToList()
-                                }
-                        );
+                                }).ToListAsync();
 
-                return query.ToArray();
+                return query;
             }
         }
 
-        public bool AddIngredientToRecipeById([FromUri] int id, [FromBody] AddIngredientToRecipe model)
+        public async Task<bool> AddIngredientToRecipeById([FromUri] int id, [FromBody] AddIngredientToRecipe model)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -122,7 +123,7 @@ namespace AGILEGroceryList.Services
                         .Single(e => e.RecipeId == id && e.OwnerId == _userId);
 
                 entity.Ingredients.Add((entity.Ingredients.Count() + 1), new List<int> { IngredientId, MeasurementId, model.Quanity });
-                return ctx.SaveChanges() == 1;
+                return await ctx.SaveChangesAsync() == 1;
             }
         }
     }
