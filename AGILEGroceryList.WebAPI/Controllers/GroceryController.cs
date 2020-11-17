@@ -1,4 +1,5 @@
 ﻿using AGILEGroceryList.Models;
+using AGILEGroceryList.Models.GroceryList;
 using AGILEGroceryList.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -57,6 +58,37 @@ namespace AGILEGroceryList.WebAPI.Controllers
             IEnumerable<GroceryListItem> groceries = service.GetGroceryLists();
 
             return Ok(groceries);
+        }
+
+
+        //======Update=======//
+        [HttpPut]
+        public IHttpActionResult UpdateGroceryList([FromUri] int id, [FromBody] GroceryEdit model)
+        {
+            GroceryService service = CreateGroceryService();
+
+            if(!service.UpdateGroceryListById(id, model))
+            {
+                return InternalServerError();
+            }
+
+            return Ok();
+        }
+
+
+
+        //=======Delete=======//
+        [HttpDelete]
+        public IHttpActionResult DeleteGroceryList(int id)
+        {
+            GroceryService service = CreateGroceryService();
+
+            if(!service.DeleteGroceryListById(id))
+            {
+                return InternalServerError();
+            }
+
+            return Ok();
         }
     }
 }

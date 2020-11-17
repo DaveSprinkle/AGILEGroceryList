@@ -1,4 +1,5 @@
 ﻿using AGILEGroceryList.Data;
+using AGILEGroceryList.Models.Ingredient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,6 @@ namespace AGILEGroceryList.Models
 
         public string Name { get; set; }
 
-        public List<IngredientList> Ingredients { get; set; }
+        public List<ListIngredient> Ingredients { get; set; }
     }
 }

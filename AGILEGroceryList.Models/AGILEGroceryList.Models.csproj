@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GroceryList\GroceryCreate.cs" />
+    <Compile Include="GroceryList\GroceryEdit.cs" />
     <Compile Include="GroceryList\GroceryListItem.cs" />
     <Compile Include="Ingredient\CreateIngredient.cs" />
     <Compile Include="Ingredient\ListIngredient.cs" />
