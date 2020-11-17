@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace AGILEGroceryList.Data.Measurements
 {
-    public class Measurements
+    public class Measurement
     {
         [Key]
-        public int MeasurementsId { get; set; }
+        public int MeasurementId { get; set; }
         public string Name { get; set; }//Cups or grams
         public TypeOfMeasurement TypeOfMeasurement { get; set; }//Volume / Mass / Quanity
         public string Conversion { get; set; }// from basic number to this value x*Conversion = Basic Storage Value | BasicStorageValue* Conversion = Valuse for grocery list

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using AGILEGroceryList.Data.Measurements;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
@@ -41,6 +42,8 @@ namespace AGILEGroceryList.Data
         public DbSet<Meal> Meals { get; set; }
 
         public DbSet<GroceryList> GroceryLists { get; set; }
+
+        public DbSet<Measurement> Measurements { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
