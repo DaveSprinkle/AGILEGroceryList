@@ -31,26 +31,18 @@ namespace AGILEGroceryList.Services
         //==========================CREATE===============================//
 
 
-        public bool CreateNewIngredient(CreateIngredient ingredient)
+        public async Task<bool> CreateNewIngredient(CreateIngredient model)
         {
-            if (ingredient is null)
-            {
-                return false;
-            }
-
             var entity =
                 new Ingredient()
                 {
-                    Name = ingredient.Name
+                    Name = model.Name,
                 };
 
-            using (var ctx = new ApplicationDbContext())
-            {
-                ctx.Ingredients.Add(entity);
-
-                return ctx.SaveChanges() == 1;
-            }
+            _context.Ingredients.Add(entity);
+            return await _context.SaveChangesAsync() == 1;
         }
+
 
 
 
@@ -104,22 +96,20 @@ namespace AGILEGroceryList.Services
 
 
 
-        //==========================GET INGREDIENT BY NAME===============================//
+        //==========================UPDATE INGREDIENT BY NAME===============================//
 
 
-        public bool EditIngredientByName([FromUri] int id, [FromBody] EditIngredient ingredient)
+        public async Task<bool> UpdateIngredientByName([FromUri] string name, [FromBody] EditIngredient model)
         {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                ctx
+            var entity =
+                _context
                 .Ingredients
-                .Single(e => e.IngredientId == id);
-                entity.Name = ingredient.Name;
-                return ctx.SaveChanges() == 1;
+                .Single(e => e.Name == name);
+            entity.Name = model.Name;
 
-            }
+            return await _context.SaveChangesAsync() == 1;
         }
+
 
 
 

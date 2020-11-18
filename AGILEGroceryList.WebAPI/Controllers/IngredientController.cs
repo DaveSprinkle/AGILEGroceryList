@@ -44,14 +44,34 @@ namespace AGILEGroceryList.WebAPI.Controllers
         }
 
 
-        [HttpGet]
 
+
+
+        [HttpGet]
         public async Task<IHttpActionResult> GetAll()
         {
-            List<Ingredient> ingredients = await _context.Ingredients.ToListAsync();
+
+            IngredientServices service = CreateIngredientService();
+            IEnumerable<ListIngredient> ingredients = await service.GetIngredients();
 
             return Ok(ingredients);
         }
+
+
+        public async Task<IHttpActionResult> GetIngredientById(string name)
+        {
+
+            IngredientServices service = CreateIngredientService();
+            IEnumerable<ListIngredient> ingredients = await service.GetIngredients();
+
+            return Ok(ingredients);
+        }
+
+
+
+
+
+
 
 
 
